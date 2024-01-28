@@ -123,7 +123,7 @@ const G = ( function() {
 
     const _startLevel = function (val) {
         _level = val;
-        PS.statusText("Cross-Stitch --- Lv "+_level);
+        PS.statusText("Cross-Stitch --- Lv "+_level+"/10");
 
         let data = _LEVELS[_level];
         _width = data._width;
