@@ -60,11 +60,12 @@ const G = ( function() {
             PS.border(PS.ALL, PS.ALL, 0);
             PS.color(PS.ALL, _height-1, PS.COLOR_GREEN);
             PS.statusText("Rain");
-            PS.imageLoad("rainguy.png", function(data) {
+            PS.imageLoad("images/rainguy.png", function(data) {
                 myImage = data;
                 PS.debug(myImage);
                 mySprite = PS.spriteImage(myImage);
             });
+            id = mySprite;
             id = mySprite;
             PS.debug("id: " + id);
             _startLevel(_level);
