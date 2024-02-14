@@ -10,13 +10,13 @@ var G; // establish game namespace
     var id1; // sprite 1 identifier
     var id2; // sprite 2 identifier
     var xpos = 6; // x-pos of sprite 2
-    var ypos = 6; // y-pos of sprite 2
+    var ypos = 19; // y-pos of sprite 2
 
     var floorPlane = 0;
     var s1Plane = 1;
     var s2Plane = 2;
 
-    let _max_x = 29;
+    let _max_x = 23;
 
     G = {
         width : 32, // width of grid
@@ -62,7 +62,7 @@ var G; // establish game namespace
                 }
                 PS.statusText( s1 + type + s2 );
             }
-            PS.spriteCollide( id2, reporter );
+            PS.spriteCollide( id1, reporter );
         },
 
         // move( x, y )
@@ -109,14 +109,14 @@ PS.keyDown = function( key, shift, ctrl, options ) {
         case 97: // lower-case a
         case 65: // upper-case A
         {
-            G.move( -1, 0 );
+            G.move( -5, 0 );
             break;
         }
         case PS.KEY_ARROW_RIGHT:
         case 100: // lower-case d
         case 68: // upper-case D
         {
-            G.move( 1, 0 );
+            G.move( 5, 0 );
             break;
         }
     }
