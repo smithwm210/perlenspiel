@@ -42,7 +42,7 @@ var G; // establish game namespace
                 PS.spritePlane(id2, s2Plane);
                 PS.spriteMove(id2, xpos, ypos);
             };
-            PS.imageLoad("rainguy.png", loader);
+            PS.imageLoad("rainguymini.png", loader);
 
             // Create 3x3 solid green sprite
             // with 50% alpha transparency
