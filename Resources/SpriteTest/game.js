@@ -47,13 +47,12 @@ var G; // establish game namespace
             // Create 3x3 solid green sprite
             // with 50% alpha transparency
             // Place on plane 2 at left side of grid
-            id2 = PS.spriteSolid( 3, 3 );
-            PS.spriteSolidColor( id2, PS.COLOR_GREEN );
-            PS.spritePlane( id2, s2Plane );
-            PS.spriteMove( id2, xpos, ypos );
+            // id2 = PS.spriteSolid( 3, 3 );
+            // PS.spriteSolidColor( id2, PS.COLOR_GREEN );
+            // PS.spritePlane( id2, s2Plane );
+            // PS.spriteMove( id2, xpos, ypos );
 
             // Assign collision function to sprite 2
-
             reporter = function ( s1, p1, s2, p2, type ) {
                 if ( type === PS.SPRITE_TOUCH ) {
                     type = " touched "
