@@ -227,7 +227,7 @@ PS.init = function() {
     PS.gridSize(G.width, G.height); // init grid
     PS.border(PS.ALL, PS.ALL, 0); // no borders
     G.drawMap();
-    PS.statusText("Rain");
+    PS.statusText("When It Rains");
     G.startGame();
 };
 
