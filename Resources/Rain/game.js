@@ -225,7 +225,10 @@ var G; // establish game namespace
 
 PS.init = function() {
     PS.gridSize(G.width, G.height); // init grid
+    PS.gridColor(0xA3A3A3);
     PS.border(PS.ALL, PS.ALL, 0); // no borders
+    PS.audioLoad("fx_bloink");
+    PS.audioLoad("fx_scratch");
     G.drawMap();
     PS.statusText("When It Rains");
     G.startGame();
