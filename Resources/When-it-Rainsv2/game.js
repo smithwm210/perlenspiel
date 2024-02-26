@@ -148,19 +148,19 @@ var G; // establish game namespace
             PS.spriteMove(idRain2, rain_x, rain2_y);
 
             // load player with image sprite
-            // loader = function (data) {
-            //     idPlayer = PS.spriteImage(data);
-            //     PS.spritePlane(idPlayer, playerPlane);
-            //     PS.spriteMove(idPlayer, xpos, ypos);
-            // };
-            // PS.imageLoad("rainguymini.png", loader);
+            loader = function (data) {
+                idPlayer = PS.spriteImage(data);
+                PS.spritePlane(idPlayer, playerPlane);
+                PS.spriteMove(idPlayer, xpos, ypos);
+            };
+            PS.imageLoad("rainguymini.png", loader);
 
             // Create 9x11 solid green sprite
             // Place on plane 3 at bottom of grid
-            idPlayer = PS.spriteSolid(9, 11);
-            PS.spriteSolidColor(idPlayer, PS.COLOR_GREEN);
-            PS.spritePlane(idPlayer, playerPlane);
-            PS.spriteMove(idPlayer, xpos, ypos);
+            // idPlayer = PS.spriteSolid(9, 11);
+            // PS.spriteSolidColor(idPlayer, PS.COLOR_GREEN);
+            // PS.spritePlane(idPlayer, playerPlane);
+            // PS.spriteMove(idPlayer, xpos, ypos);
 
             // Create game over scorecard
             idScoreCard = PS.spriteSolid(23, 20);
