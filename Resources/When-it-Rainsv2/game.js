@@ -576,7 +576,6 @@ var G; // establish game namespace
         },
 
         startGame() {
-            G.drawMap();
             PS.border(PS.ALL, PS.ALL, 0); // no borders
             PS.statusText("When it Rains | Score: 0");
             G._play = true;
@@ -598,6 +597,7 @@ PS.init = function() {
     PS.audioLoad("fx_scratch");
     PS.audioLoad("perc_drum_bass");
     G.highScore = 0;
+    G.drawMap();
     G.startGame();
 };
 
