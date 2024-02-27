@@ -10,6 +10,7 @@ var G; // establish game namespace
     var idRain; // rain sprite 1 identifier
     var idRain2; // rain sprite 2 identifier
     var idPlayer; // player sprite identifier
+    var idRainSplash; // rain splash sprite identifier
     var idScoreCard; // score card sprite identifier
     var idRetryBox; // retry button sprite identifier
     var xpos = 11; // x-pos of player
@@ -33,8 +34,9 @@ var G; // establish game namespace
     var s1Plane = 1;
     var s2Plane = 2;
     var playerPlane = 3;
-    var scorePlane = 4;
-    var retryPlane = 5;
+    var splashPlane = 4;
+    var scorePlane = 5;
+    var retryPlane = 6;
 
     let _max_x = 23;
 
@@ -161,6 +163,13 @@ var G; // establish game namespace
             // PS.spriteSolidColor(idPlayer, PS.COLOR_GREEN);
             // PS.spritePlane(idPlayer, playerPlane);
             // PS.spriteMove(idPlayer, xpos, ypos);
+
+            // Create rain splash
+            idRainSplash = PS.spriteSolid(1, 1);
+            PS.spriteSolidColor(idRainSplash, 0x6390E3)
+            PS.spriteSolidAlpha(idRainSplash, _RAINALPHA);
+            PS.spritePlane(idRainSplash, splashPlane);
+            PS.spriteMove(idRainSplash, 31, 0);
 
             // Create game over scorecard
             idScoreCard = PS.spriteSolid(23, 20);
@@ -522,10 +531,9 @@ var G; // establish game namespace
         startGame() {
             PS.border(PS.ALL, PS.ALL, 0); // no borders
             PS.statusText("When it Rains | Score: 0");
-            xpos = 11;
-            PS.debug(idPlayer);
-            // PS.spriteMove(idPlayer, xpos, ypos);
             G._play = true;
+            xpos = 11;
+            G.move(0);
             G.curScore = 0;
             _totalHealth = 3;
             let rain_x = this.randomizeX();
