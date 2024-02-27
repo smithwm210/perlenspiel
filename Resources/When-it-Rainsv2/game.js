@@ -523,6 +523,7 @@ var G; // establish game namespace
             PS.border(PS.ALL, PS.ALL, 0); // no borders
             PS.statusText("When it Rains | Score: 0");
             xpos = 11;
+            PS.debug(idPlayer);
             // PS.spriteMove(idPlayer, xpos, ypos);
             G._play = true;
             G.curScore = 0;
