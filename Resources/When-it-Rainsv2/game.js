@@ -543,7 +543,7 @@ var G; // establish game namespace
         },
 
         timerControl : function(drop, rainx) {
-            G.move(0);
+            // G.move(0);
 
             let initialTimer = PS.timerStart(rain_speed, function() {
                 G.rainfall(rainx, drop);
