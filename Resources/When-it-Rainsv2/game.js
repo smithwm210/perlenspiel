@@ -543,7 +543,6 @@ var G; // establish game namespace
         },
 
         timerControl : function(drop, rainx) {
-            // G.move(0);
 
             let initialTimer = PS.timerStart(rain_speed, function() {
                 G.rainfall(rainx, drop);
@@ -579,7 +578,6 @@ var G; // establish game namespace
             PS.border(PS.ALL, PS.ALL, 0); // no borders
             PS.statusText("When it Rains | Score: 0");
             G._play = true;
-            xpos = 11;
             G.curScore = 0;
             _totalHealth = 3;
             let rain_x = this.randomizeX();
