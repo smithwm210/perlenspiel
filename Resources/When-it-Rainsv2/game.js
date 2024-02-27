@@ -10,7 +10,8 @@ var G; // establish game namespace
     var idRain; // rain sprite 1 identifier
     var idRain2; // rain sprite 2 identifier
     var idPlayer; // player sprite identifier
-    var idRainSplash; // rain splash sprite identifier
+    var idRainSplashL; // left rain splash sprite identifier
+    var idRainSplashR; // right rain splash sprite identifier
     var idScoreCard; // score card sprite identifier
     var idRetryBox; // retry button sprite identifier
     var xpos = 11; // x-pos of player
@@ -165,11 +166,16 @@ var G; // establish game namespace
             // PS.spriteMove(idPlayer, xpos, ypos);
 
             // Create rain splash
-            idRainSplash = PS.spriteSolid(1, 1);
-            PS.spriteSolidColor(idRainSplash, 0x6390E3)
-            PS.spriteSolidAlpha(idRainSplash, _RAINALPHA);
-            PS.spritePlane(idRainSplash, splashPlane);
-            PS.spriteMove(idRainSplash, 31, 0);
+            idRainSplashL = PS.spriteSolid(1, 1);
+            PS.spriteSolidColor(idRainSplashL, 0x6390E3)
+            PS.spriteSolidAlpha(idRainSplashL, _RAINALPHA);
+            PS.spritePlane(idRainSplashL, splashPlane);
+            PS.spriteMove(idRainSplashL, 31, 0);
+            idRainSplashR = PS.spriteSolid(1, 1);
+            PS.spriteSolidColor(idRainSplashR, 0x6390E3)
+            PS.spriteSolidAlpha(idRainSplashR, _RAINALPHA);
+            PS.spritePlane(idRainSplashR, splashPlane);
+            PS.spriteMove(idRainSplashR, 31, 1);
 
             // Create game over scorecard
             idScoreCard = PS.spriteSolid(23, 20);
@@ -198,6 +204,7 @@ var G; // establish game namespace
                         PS.audioPlay("fx_drip2", {
                             volume: 0.3
                         });
+                        G.splash(rain_x, rain_y);
                         if (G._play) {
                             PS.audioPlay("perc_drum_bass");
                             G.curScore = G.updateScore(G.curScore);
@@ -220,6 +227,7 @@ var G; // establish game namespace
                         PS.audioPlay("fx_drip2", {
                             volume: 0.3
                         });
+                        G.splash(rain2_x, rain2_y);
                         if (G._play) {
                             PS.audioPlay("perc_drum_snare");
                             G.curScore = G.updateScore(G.curScore);
@@ -255,6 +263,7 @@ var G; // establish game namespace
             if (rain_y > 28) {
                 // if rain is untouched, damage
                 if (PS.spriteSolidAlpha(idRain) > 0) {
+                    G.splash(rain_x, rain_y);
                     G.damage();
                 }
                 rain_y = -5;
@@ -264,6 +273,7 @@ var G; // establish game namespace
             if (rain2_y > 28) {
                 // if rain is untouched, damage
                 if (PS.spriteSolidAlpha(idRain2) > 0) {
+                    G.splash(rain2_x, rain2_y);
                     G.damage();
                 }
                 rain2_y = -5;
@@ -272,6 +282,41 @@ var G; // establish game namespace
             }
             PS.spriteMove(idRain, rain_x, rain_y);
             PS.spriteMove(idRain2, rain2_x, rain2_y);
+        },
+
+        splash : function(x, y) {
+            let acc = 0;
+            let lx = x; // left drop horiz pos
+            let rx = x; // right drop horiz pos
+            let ny = y; // drops vert pos
+            let splashAnimator = PS.timerStart(4, function() {
+                PS.spriteMove(idRainSplashL, lx, ny);
+                PS.spriteMove(idRainSplashR, rx, ny);
+                acc++;
+                lx = x - acc;
+                rx = x + acc;
+                switch (acc) {
+                    case(1):
+                        ny = y - 1;
+                        break;
+                    case(2):
+                        ny = y - 2;
+                        break;
+                    case(3):
+                        break;
+                    case(4):
+                        ny = y - 1;
+                        break;
+                    default:
+                        break;
+                }
+
+                if (acc > 5) {
+                    PS.spriteMove(idRainSplashL, 31, 0);
+                    PS.spriteMove(idRainSplashR, 31, 1);
+                    PS.timerStop(splashAnimator);
+                }
+            });
         },
 
         damage : function() {
